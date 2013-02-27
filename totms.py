@@ -5,7 +5,7 @@
 # This game was written for Exercise 36 of 'Learn Python The Hard Way':
 # http://learnpythonthehardway.org/book/ex36.html
 #
-#
+# It is a work in progress, and will keep growing.
 
 import os
 from sys import exit
