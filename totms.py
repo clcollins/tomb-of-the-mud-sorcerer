@@ -16,23 +16,51 @@ from sys import exit
 
 ### Global vars that need to be set at the beginning of the game
 
+# Last location is not yet implemented
+last = "startgame"
+
 # Sets the "bad choice count" for use in function 'badchoice'
 choice_count = 0
 
+# Turns are not yet implemented
+turns = 0
+
+## The Player's Inventory ##
+gold = 0
+
+# Torches are not yet implemented
+torches = 3
+
+# Food is not yet implemented
+food = ["4 apples",
+        "some hard rolls",
+        "an eighth of a wheel of moldy cheese"]
+
+inventory = ["a rusty old shortsword",
+             "a too-large horned helmet",
+             "battered brown boots",
+             "hand-me-down clothes",
+             "extra-itchy underwear"]
+
 # Start the game
+
 
 def startgame(firsttime):
     """
-    Function 'startgame' begins the game, prints the logo, if it's the
+    LOCATION 000
+    ------------
+    Begins the game, prints the logo if it's the
     first time through, and chastizes you if it's not.
     """
     if  firsttime == 0:
         os.system('clear')
         logo()
-    else:
+    elif firsttime == 1:
         print "\t*****\n"
         print "\tBack again, eh?\n\n"
         cont(0)
+    else:
+        print ""
 
     print """
     \tBefore you stands the entrance to the tomb of the Mud Sorcerer,
@@ -45,16 +73,18 @@ def startgame(firsttime):
     fortune at last...\n
     """
 
-    dowhat()
-    print "1. Enter the Tomb"
-    print "2. Look around first"
-    print "3. Chicken out and go home instead..."
-    print ""
+    dowhat(["Enter the Tomb",
+            "Look around first",
+            "Chicken out and go home instead..."])
 
     while True:
         next = raw_input("> ")
-
-        if next == "1":
+        if next == 'I' or next == 'i':
+            list_inventory()
+            startgame(2)
+        elif next == 'Q' or next == 'q':
+            chicken_out()
+        elif next == "1":
             print "\nYou decide to enter the Tomb.\n"
             cont(0)
             main_entrance()
@@ -71,12 +101,64 @@ def startgame(firsttime):
 
 
 def main_entrance():
-    # Not yet written - kick to lazy_storyteller with destination 'startgame'
-    # w/print logo false
-    lazy_storyteller(startgame, 1)
+    """
+    LOCATION 001
+    ------------
+    """
+    os.system('clear')
+    print """
+    \tYou duck quickly into the small opening that marks the entrace to the
+    Mud Sorcerer's tomb.  Inside is a round, smallish room, musty smelling
+    and damp.  A floor of rough-cut stone pavers stretches between walls of
+    small, hand-sized bricks.\n
+    \tThe walls were once painted with a wash of white plaster, though much
+    has fallen.  You can just make out some images on the little intact
+    plaster that remains.\n
+    \tAnother small door with a stone lintel exits across the room from the
+    entrance.\n
+    \tOther than some leaves blown into the corner, the room is empty.\n
+    """
+
+    dowhat(["Go through the door",
+            "Examine the walls",
+            "Check out the leaves"])
+
+    while True:
+        next = raw_input("> ")
+        if next == 'I' or next == 'i':
+            list_inventory()
+            main_entrance()
+        elif next == 'Q' or next == 'q':
+            chicken_out()
+        elif next == "1":
+            print "\nYou go through the small door"
+            cont(0)
+            burial_chamber()
+        elif next == "2":
+            print "\nYou decide to examine the walls"
+            cont(0)
+            os.system('clear')
+            print """
+            CHECKING OUT THE WALLS, YO
+            """
+            main_entrance()
+        elif next == "3":
+            print "\nYou walk to the corner to examin the leaves"
+            cont(0)
+            os.system('clear')
+            print """
+            Leaves!  LEAVES!  LEEEAAAAVVVVEEESSS!!!!
+            """
+            main_entrance()
+        else:
+            badchoice(next, choice_count)
 
 
 def entrance_look():
+    """
+    LOCATION 002
+    ------------
+    """
     os.system('clear')
     print """
     \tThe entrance to the Tomb of the Mud Sorcerer is unassuming for one who
@@ -92,16 +174,18 @@ def entrance_look():
     of one of the larger bushes.\n
     """
 
-    dowhat()
-    print "1. Enter the tomb"
-    print "2. Wake up the storyteller"
-    print "3. Chicken out and run away..."
-    print ""
+    dowhat(["Enter the tomb",
+            "Wake up the storyteller",
+            "Chicken out and run away..."])
 
     while True:
         next = raw_input("> ")
-
-        if next == "1":
+        if next == 'I' or next == 'i':
+            list_inventory()
+            entrance_look()
+        elif next == 'Q' or next == 'q':
+            chicken_out()
+        elif next == "1":
             print "\nYou enter the Tomb.\n"
             cont(0)
             main_entrance()
@@ -117,20 +201,23 @@ def entrance_look():
             print "That's not a choice."
 
 
-def lazy_storyteller(go_where, opt):
-    os.system('clear')
-    print """
-    \tRight now the storyteller is lazy.  (You can see him
-    sleeping off to the side of the entrance, next to some bushes).
-    Otherwise, he's not thought of anything for you to see yet.\n
+def burial_chamber():
     """
+    LOCATION 003
+    -----------
+    """
+    lazy_storyteller(startgame, 1)
 
-    print "\tMight as well start out at the beginning, again.\n"
-
-    go_where(opt)
+#########################
+### ENDGAME functions ###
+#########################
 
 
 def wake_storyteller():
+    """
+    LOCATION 003
+    ------------
+    """
     os.system('clear')
     print """
     \tYou approach the storyteller.  The man is huge - easily well over
@@ -165,15 +252,50 @@ def chicken_out():
     safe, and above all, boring life on the farm.  So ends the
     non-career of an ordinary, unremarkable loser.\n
     """
-    print "Thanks for playing, though.\n"
+    print "\tThanks for playing, though.\n"
     exit(0)
 
 
-def dowhat():
+def dead(why):
+    os.system('clear')
+    print ""
+    print "\t", why, "You are dead.\n"
+    print "\tOH NOES!\n"
+    cont(1)
+    os.system('clear')
+    print ""
+    print "Thank you for playing:\n"
+    logo()
+    exit(0)
+
+####################################################################
+### Below here are meta-game functions - those that don't belong ###
+### to a particular room or situation (ie. functional stuff).    ###
+####################################################################
+
+
+def dowhat(list):
+    """
+    Prompts user for what they want to do next.
+    """
     print "What do you do?\n"
+    i = 0
+    while i <= len(list) - 1:
+        print "%d -  " % (i + 1), list[i]
+        i += 1
+    print ""
+    print "i - Check Inventory"
+    print "q - Quit"
+    print ""
 
 
 def cont(i):
+    """
+    Prompt user to continue.
+    If passed 0 (True),  then display the prompt
+    If passed 1 (False), then don't display a prompt
+    but still require input to continue.
+    """
     if i == 0:
         raw_input("Continue...")
     elif i == 1:
@@ -182,7 +304,48 @@ def cont(i):
         die("Error: Out of Bounds variable in function 'cont'.")
 
 
+def list_inventory():
+    print "\tGold:", gold, "\tTorches:", torches, "\n"
+    print "\n\tFood:"
+    i = 0
+    while i <= len(food) - 1:
+        print "\t*", food[i]
+        i += 1
+    n = 0
+    print "\n\tStuff:"
+    while n <= len(inventory) - 1:
+        print "\t*", inventory[n]
+        n += 1
+    print ""
+    cont(0)
+
+
+def lazy_storyteller(go_where, opt):
+    """
+    A handler function to throw in for any options that are not yet
+    coded into the game.  Takes the option "go_where" to specify
+    where to return the player, and "opt" to pass any special options
+    that the target of "go_where" might need.
+
+    Example usage: lazy_storyteller(startgame, 1)
+    """
+    os.system('clear')
+    print """
+    \tRight now the storyteller is lazy.  (You can see him
+    sleeping off to the side of the entrance, next to some bushes).
+    Otherwise, he's not thought of anything for you to see yet.\n
+    """
+
+    print "\tMight as well start out at the beginning, again.\n"
+
+    go_where(opt)
+
+
 def badchoice(choice, count):
+    """
+    Error handling for bad input.  End game if user can't figure
+    it out after 5 tries.
+    """
     print "\t%r is not a choice.\n" % choice
     choices = [
         "\tPerhaps you should try reading for a change.\n",
@@ -203,24 +366,19 @@ def badchoice(choice, count):
         dead(my_choice)
 
 
-def dead(why):
-    os.system('clear')
-    print ""
-    print "\t", why, "You are dead.\n"
-    print "\tOH NOES!\n"
-    cont(1)
-    os.system('clear')
-    print ""
-    print "Thank you for playing:\n"
-    logo()
-    exit(0)
-
-
 def die(why):
+    """
+    Simple Error handler with exit 1 and error message
+    Message is passed when function is called
+    """
     print "Error:", why
     exit(1)
 
+
 def logo():
+    """
+    The logo of the tomb of the Mud Sorcerer
+    """
     print """
                   ______ __         ______              __
                  /_  __// /  ___   /_  __/___   __ _   / /
