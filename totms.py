@@ -204,7 +204,8 @@ def dead(why):
     cont(1)
     os.system('clear')
     print ""
-    print "\tThank you for playing.\n\n"
+    print "Thank you for playing:\n"
+    logo()
     exit(0)
 
 
