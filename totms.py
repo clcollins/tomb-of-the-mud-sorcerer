@@ -1,4 +1,4 @@
-# MiniPyAdventure
+# Tomb of the Mud Sorcerer
 #
 # A 'Choose Your Own Adventure'-style game written in Python.
 #
@@ -6,6 +6,10 @@
 # http://learnpythonthehardway.org/book/ex36.html
 #
 # It is a work in progress, and will keep growing.
+#
+# Written by: Chris Collins <christopher.collins@duke.edu>
+#
+#
 
 import os
 from sys import exit
