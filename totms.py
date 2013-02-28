@@ -19,10 +19,10 @@ choice_count = 0
 
 # Start the game
 
-
 def startgame(firsttime):
-    if  firsttime == "yes":
+    if  firsttime == 0:
         os.system('clear')
+        logo()
     else:
         print "\t*****\n"
         print "\tBack again, eh?\n\n"
@@ -142,7 +142,7 @@ def wake_storyteller():
     \tThe noise grows - louder and louder until you feel you can no longer
     deal with the pain.\n
     \tThe floating figure gazes upon you, and slowly raises one hand
-    to point you directly at you.  The world is suddenly filled with
+    to point directly at you.  The world is suddenly filled with
     the light of a thousand suns and then...\n
     """
 
@@ -230,4 +230,4 @@ def logo():
                                                                       v0.1
    """
 
-startgame("yes")
+startgame(0)
