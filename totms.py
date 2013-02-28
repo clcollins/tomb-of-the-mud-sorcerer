@@ -14,12 +14,18 @@
 import os
 from sys import exit
 
-# Global vars that need to be set at the beginning of the game
+### Global vars that need to be set at the beginning of the game
+
+# Sets the "bad choice count" for use in function 'badchoice'
 choice_count = 0
 
 # Start the game
 
 def startgame(firsttime):
+    """
+    Function 'startgame' begins the game, prints the logo, if it's the
+    first time through, and chastizes you if it's not.
+    """
     if  firsttime == 0:
         os.system('clear')
         logo()
@@ -65,8 +71,9 @@ def startgame(firsttime):
 
 
 def main_entrance():
-
-    lazy_storyteller(startgame, 'no')
+    # Not yet written - kick to lazy_storyteller with destination 'startgame'
+    # w/print logo false
+    lazy_storyteller(startgame, 1)
 
 
 def entrance_look():
