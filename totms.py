@@ -139,8 +139,20 @@ def main_entrance():
             cont(0)
             os.system('clear')
             print """
-            CHECKING OUT THE WALLS, YO
+    \tYou lean in closer to the walls, holding your torch close to make out
+    the details of the ancient paintings.\n
+    \tCovering what is left of the crumbling plaster, ocre beings alternately
+    dance and prostrate themseles before what appears to be a giant.\n
+    \tIn places, painted figures are crucified on giant black wheels, and
+    raised to the tops of tall poles. Hundreds stand planted on the dark
+    hills in the background. Elsewhere, frenzied beings flay the skin from
+    the backs of others tied to standing triangle frames.\n
+    \tAbove it all, the giant stands.\n
+    \tRepeated over and over along the top and bottom of the paintings are
+    strange words:\n\n
+    \tMAG-KASSER E KAOLAN PATRECH MAG-KASSER E KAOLAN PATRECH MAG-KASSER\n
             """
+            cont(0)
             main_entrance()
         elif next == "3":
             print "\nYou walk to the corner to examin the leaves"
@@ -225,11 +237,11 @@ def wake_storyteller():
     his face.\n
     \tAs you reach forward with your boot, the storyteller suddenly wakes
     and screams!\n
-    \tBrillian light pours from his eyes and mouth and shines from behind
+    \tDazzling light pours from his eyes and mouth and shines from behind
     the prone figure.  A sound like none you've ever heard roars in your
     ears.\n
     \tThe storyteller slowly rises from the ground to float above you,
-    arms and legs outstretched, with more of the brillian fire pouring
+    arms and legs outstretched, with more of the brilliant fire pouring
     from palms and soles.  Around you stones pull free from the earth and
     rise into the air.  The ground cracks and splinters and the struggling
     local flora ignites in flame.\n
