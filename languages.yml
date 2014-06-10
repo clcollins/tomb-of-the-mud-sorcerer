@@ -1,0 +1,53 @@
+#
+# Tomb of the Mud Sorcerer:
+# Language Development 
+#
+# Christopher Collins <christopher.collins@duke.edu>
+#
+# https://github.com/clcollins/tomb-of-the-mud-sorcerer
+#
+
+#Language on the Tomb Walls
+
+# ALPHABET OF SOUNDS:
+# A "cat, bay"
+# D "dog"
+# E "elf, eel"
+# G "grape"
+# YUH "yellow", replaced soft G sounds
+# H "happy"
+# Y "lie"
+# K "kite"
+# L "letter"
+# M "man"
+# N "no"
+# O "oh"
+# P "pet"
+# R "rat"
+# S "sad"
+# T "table"
+# U "bug"
+# V "vat"
+# Z "zed"
+
+# Notes:
+# No sounds for:
+# B "Bee"
+# F "Fat"
+# G "gee, replaced by YUH
+# I "hit"
+# I "lie", replaced by Y
+# J "jet", replaced by YUH
+# Q "queen"
+# W "wet", replaced by V as "vat"
+# X "Rex, Xavier"
+
+SORCERER: mag
+KING: kasser
+GOLAM: kaolan
+# (lit. clay being)
+CLAY: kaol
+BEING: an
+FATHER: patrek
+THE: e
+
