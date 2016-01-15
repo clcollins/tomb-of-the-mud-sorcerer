@@ -1,5 +1,3 @@
----
-
 # Room Codes
 # 00x: Pregame
 # 01x: "Public" tomb
@@ -15,9 +13,17 @@
 # De - Draft editing required
 # C  - Completed!
 # Nr - Needs review
+# rooms:
+#- '000':
+#    name: foo
+#    text: bar
+#- '001':
+#    name: baz
+#    text: rekt
+---
 
 rooms:
-  - 000:
+  - '000':
     name: Startgame
     desc: "Begins the game, an overview of the Tomb from outside."
     finish: De
@@ -32,12 +38,12 @@ rooms:
       So you stand, nervous and excited, before the tomb of the most dangerous
       and powerful man of the last century, ready to seek your fortune at last."
     options:
-      - Approach the Tomb
+      - 'Approach the Tomb':
         to: 010
         to_outtro: >
           "With dreams of glory and not a little apprehension, you head toward
           the entrance of the Tomb" 
-      - Chicken out and run away...:
+      - 'Chicken out and run away...':
         to: 990
         to_outtro: ""
       - Credits: 
@@ -46,7 +52,7 @@ rooms:
 
 # PUBLIC TOMB AREAS
 
-  - 010
+  - '010':
     name: Main Entrance
     desc: "Entrance to the Tomb"
     finish: De
@@ -65,18 +71,18 @@ rooms:
       To one side, quiet, rumbling sounds eminate from behind the leaves of one
       of the larger bushes."
     options:
-      - Enter the Tomb
+      - 'Enter the Tomb':
         to: 011
         to_outtro: >
           "You duck quicky into the small opening that marks the entrance to the
           Mud Sorcerer's tomb."
-      - Check out the bushes
+      - 'Check out the bushes':
         to: 998
         to_outtro: > 
           "You delay entering the tomb for now, and head over to the bushes to 
           investigate."
 
-  - 011
+  - '011':
     name: The Entry Chamber
     desc: ""
     finish: O
@@ -94,21 +100,21 @@ rooms:
       room from the entrance.  Other than a small pile of leaves blown into 
       one corner, the room is empty."
     options:
-      - Go through the door
+      - 'Go through the door':
         to: 014
         to_outtro: >
           "Crossing quickly past the gazes terrible things painted on the walls,
           you cross the short chamber and pass through the stone doorway."
-      - Examine the walls
+      - 'Examine the walls':
         to: 012
         to_outtro: >
           "You lean in closer to the walls, holding your torch close to make 
           out the details in the ancient paintings."
-      - Check out the pile of leaves
+      - 'Check out the pile of leaves':
         to: 013
         to_outtro: "You decide to check out the small pile of leaves"
 
-  - 012
+  - '012':
     name: The Entry Chamber paintings
     desc: ""
     finish: De
@@ -127,11 +133,11 @@ rooms:
 
       'MAG-KASSER E KAOLAN PATREK MAG-KASSER E KAOLAN PATREK MAK-KASSER E...'"
     options:
-      - The Entry Chamber
+      - 'The Entry Chamber':
         auto_go: true
         go: 011
 
-  - 013
+  - '013':
     name: The Entry Chamber leaves
     desc: ""
     finish: S
@@ -140,11 +146,11 @@ rooms:
       
       Yeah.  They're just some leaves."
     options:
-      - The Entry Chamber
+      - 'The Entry Chamber':
         auto_go: true
         go: 011
 
-  - 014
+  - '014':
     name: Sarcophagus
     desc: ""
     finish: P 
@@ -153,41 +159,41 @@ rooms:
 
 # WAYS TO DIE
 
-  - 900
+  - '900':
     name: Vaporized
     desc: "Doh"
     finish: C
     text: "The storyteller vaporizes you for your arrogance."
     options: 
-      - Thanks
+      - 'Thanks':
         auto_go: true
         go: 996
 
 # SPECIAL AREAS
 
-  - 990
+  - '990':
     name: Chicken Out
     finish: Td
     text: >
       "The fear of the unknown is too much for you, and you turn around, head
       hung low, and return to your comfortable, safe, and above all, boring life
-      on the farm.  So ends the non-career of an ordinary, unremarkable loser.
+      on the farm.  So ends the non-career of an ordinary, unremarkable loser."
     options:
-       - Thanks
+       - 'Thanks':
          auto_go: true
          go: 996
 
-  - 996
+  - '996':
     name: Thanks
     desc: "Thanks"
     finish: C
     text: "Thanks for playing, though."
     options:
-      - End
+      - 'End':
         go: 000
         auto_go: true
 
-  - 997
+  - '997':
     name: The Storyteller's Makeshift Bed
     desc:
     finish: Td
@@ -196,11 +202,11 @@ rooms:
       feet tall, and several hundred pounds.  An impressive beard graces his
       face."
     options:
-      - Wake the Storyteller
+      - 'Wake the Storyteller':
         go: 998
         goouttro: "You decide to wake the slumbering storyteller."
 
-  - 998
+  - '998':
     name: The Waking of the Storyteller
     desc: "Uh-oh!"
     finish: De
@@ -221,10 +227,10 @@ rooms:
       directly at you. The world is suddenly filled with the light of a
       thousand suns and then..."
     options:
-      - Dead
+      - 'Dead':
         go: 900
         auto_go: true
 
- - 999
+  - '999':
     name: Credits
     finish: P
